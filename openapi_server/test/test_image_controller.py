@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from __future__ import absolute_import
+import time
 import unittest
 from unittest import mock
 
@@ -44,6 +45,7 @@ class TestImageController(BaseTestCase):
             data=data,
             content_type="multipart/form-data",
         )
+        time.sleep(60)
         self.assert200(response, "Response body is : " + response.data.decode("utf-8"))
 
     @mock.patch.object(models.Image, "delete_image")
@@ -63,6 +65,7 @@ class TestImageController(BaseTestCase):
         self.assertStatus(
             response, 204, "Response body is : " + response.data.decode("utf-8")
         )
+        time.sleep(60)
         assert mock_delete.call_count == 1
 
     @mock.patch.object(models.Image, "get_image")
@@ -80,6 +83,7 @@ class TestImageController(BaseTestCase):
             method="GET",
             headers=headers,
         )
+        time.sleep(60)
         self.assert200(response)
 
 
