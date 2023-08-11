@@ -24,6 +24,7 @@ def add_image():  # noqa: E501
         return InlineResponse200(image_id=image.id)
     except (SQLAlchemyError, TypeError):
         models.db.session.rollback()
+        
         return Error(400), 400
 
 
