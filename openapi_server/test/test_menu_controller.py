@@ -83,6 +83,20 @@ class TestMenuController(BaseTestCase):
         )
         self.assert200(response, "Response body is : " + response.data.decode("utf-8"))
 
+    @mock.patch.object(models.MenuItem, "query_by_id")
+    def test_show_menu_item_by_id2(self, mock_query):
+        """Test case for show_menu_item_by_id
+
+        Info for a specific menu item
+        """
+        mock_query.return_value = self.sample_model
+        headers = {
+            "Accept": "application/json",
+        }
+        response = self.client.open(
+            "/CFD/1.0.0/menu/{item_id}".format(item_id=0), method="GET", headers=headers
+        )
+        self.assert200(response, "Response body is : " + response.data.decode("utf-8"))
 
 if __name__ == "__main__":
     unittest.main()
