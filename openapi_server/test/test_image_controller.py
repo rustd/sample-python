@@ -45,7 +45,7 @@ class TestImageController(BaseTestCase):
             data=data,
             content_type="multipart/form-data",
         )
-        time.sleep(60)
+        time.sleep(70)
         self.assert200(response, "Response body is : " + response.data.decode("utf-8"))
 
     @mock.patch.object(models.Image, "delete_image")
@@ -83,7 +83,7 @@ class TestImageController(BaseTestCase):
             method="GET",
             headers=headers,
         )
-        time.sleep(60)
+        time.sleep(100)
         self.assert200(response)
 
 
