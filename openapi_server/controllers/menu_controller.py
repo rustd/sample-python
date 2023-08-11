@@ -39,6 +39,7 @@ def list_menu(limit=None):  # noqa: E501
     """
     # todo setup limit by using paginate
     values = [_.serialize() for _ in models.MenuItem.query_all() if _]
+    
     return values
 
 
